@@ -1,0 +1,15 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Properties</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list">Property List</a></li>
+		<li class="breadcrumb-item active">Update Property</li>
+	</ul>
+</div>
+<vintage-property-form formSubject="Update Existing Property" action="update" [propertyData]="selectedPropertyData">
+</vintage-property-form>

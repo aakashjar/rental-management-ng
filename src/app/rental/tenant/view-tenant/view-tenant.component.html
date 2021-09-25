@@ -1,0 +1,111 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Tenants</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list">List Tenants</a></li>
+		<li class="breadcrumb-item active">View Tenant</li>
+	</ul>
+</div>
+<section class="tables">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">Tenant Information</h3>
+					</div>
+					<div class="card-body">
+						<p class="h3 mb-4">About Me:</p>
+						<p><strong>Full Name: </strong>{{ selectedTenantData.tenantFullName }}</p>
+						<p><strong>Mobile Number: </strong>{{ selectedTenantData.tenantMobileNumber }}</p>
+						<p><strong>Email Address: </strong>{{ selectedTenantData.tenantEmailAddress }}</p>
+						<p><strong>Address: </strong>{{ selectedTenantData.tenantAddress }}</p>
+						<p><strong>Occupation Status: </strong>{{ selectedTenantData.tenantOccupationStatus }}</p>
+						<p><strong>Occupation Place: </strong>{{ selectedTenantData.tenantOccupationPlace }}</p>
+						<p><strong>Emergency Contact Person: </strong>{{ selectedTenantData.tenantEmergencyContactName }}</p>
+						<p><strong>Emergency Contact Mobile: </strong>{{ selectedTenantData.tenantEmergencyContactMobileNumber }}
+						</p>
+						<div class="form-inline justify-content-end">
+							<div class="form-group mr-2">
+								<button type="button" class="btn btn-warning" (click)="onEditTenantData(selectedTenantData)">
+									<em class="fa fa-pencil-square-o"></em> Edit</button>
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-danger" (click)="onDeleteTenantData(selectedTenantData.tenantId)">
+									<em class="fa fa-trash-o"></em> Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">Additional Information</h3>
+					</div>
+					<div class="card-body">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a class="nav-link active" id="leases-tab" data-toggle="tab" data-target="#leases" role="tab"
+									aria-controls="leases" aria-selected="true">Leases</a>
+							</li>
+							<!-- <li class="nav-item" role="presentation">
+								<a class="nav-link" id="invoices-tab" data-toggle="tab" data-target="#invoices" role="tab"
+									aria-controls="invoices" aria-selected="false">Invoices</a>
+							</li> -->
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="leases" role="tabpanel" aria-labelledby="leases-tab">
+								<div class="table-responsive " *ngIf="!isLeaseLoading && availableLeaseSummaryDatas.length > 0">
+									<table class="table table-striped table-hover" aria-describedby="Lease List">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Leased</th>
+												<th scope="col">Type</th>
+												<th scope="col">Start Date</th>
+												<th scope="col">End Date</th>
+												<th scope="col">Rent</th>
+												<th scope="col">Deposit</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr *ngFor="let availableLeaseSummaryData of availableLeaseSummaryDatas; let i = index">
+												<th scope="row">{{ i + 1 }}</th>
+												<td>{{ availableLeaseSummaryData.leaseForName }}</td>
+												<td>{{ availableLeaseSummaryData.leaseForType }}</td>
+												<td>{{ availableLeaseSummaryData.leaseStartDate | date }}</td>
+												<td>{{ availableLeaseSummaryData.leaseEndDate | date }}</td>
+												<td>₹ {{ availableLeaseSummaryData.leaseRent }}</td>
+												<td>₹ {{ availableLeaseSummaryData.leaseDepositPaid }}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="table-responsive" *ngIf="!isLeaseLoading && availableLeaseSummaryDatas.length == 0">
+									<strong class="mb-0 mx-3 my-2">
+										<h4 class="mb-0">No lease data(s) found in system! <span style="font-size: 25px">😅</span>
+										</h4>
+									</strong>
+								</div>
+								<div class="table-responsive" *ngIf="isLeaseLoading">
+									<strong class="mb-0 mx-3 my-2">
+										<h4 class="mb-0">Please wait... Populating results <span style="font-size: 25px">😄</span></h4>
+									</strong>
+								</div>
+							</div>
+							<!-- <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">..2.</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

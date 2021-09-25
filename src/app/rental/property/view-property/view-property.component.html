@@ -1,0 +1,372 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Properties</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list">Property List</a></li>
+		<li class="breadcrumb-item active">View Property</li>
+	</ul>
+</div>
+<section class="tables">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">{{ selectedPropertyData.propertyName }}</h3>
+					</div>
+					<div class="card-body">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a class="nav-link active" id="overview-tab" data-toggle="tab" data-target="#overview" role="tab"
+									aria-controls="overview" aria-selected="true">Overview</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="facilities-amenities-tab" data-toggle="tab" data-target="#facilities-amenities"
+									role="tab" aria-controls="facilities-amenities" aria-selected="false">Facilities & Amenities</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="units-tab" data-toggle="tab" data-target="#units" role="tab"
+									aria-controls="units" aria-selected="false">Units</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="ownership-tab" data-toggle="tab" data-target="#ownership" role="tab"
+									aria-controls="ownership" aria-selected="false">Ownership</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="location-tab" data-toggle="tab" data-target="#location" role="tab"
+									aria-controls="location" aria-selected="false">Location</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+								<div class="row mt-5">
+									<div class="col-md-4">
+										<p class="mb-1">Property Type</p>
+										<p class="h5">{{ selectedPropertyData.propertyType }}</p>
+									</div>
+									<div class="col-md-4">
+										<p class="mb-1">Area</p>
+										<p class="h5">{{ selectedPropertyData.propertyArea }} Sq.ft</p>
+									</div>
+									<div class="col-md-4">
+										<p class="mb-1">Agency Commission</p>
+										<p class="h5">{{ selectedPropertyData.propertyAgencyCommission }}%</p>
+									</div>
+								</div>
+								<div class="row mt-5">
+									<div class="col-md-4">
+										<p class="mb-1">Rent</p>
+										<p class="h5">₹ {{ selectedPropertyData.propertyRent }}</p>
+									</div>
+									<div class="col-md-4">
+										<p class="mb-1">Deposit</p>
+										<p class="h5">₹ {{ selectedPropertyData.propertyDeposit }}</p>
+									</div>
+								</div>
+								<div class="row mt-5">
+									<div class="col-md-12">
+										<p class="mb-1">Description</p>
+										<p class="h5">{{ selectedPropertyData.propertyDescription }}</p>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="facilities-amenities" role="tabpanel"
+								aria-labelledby="facilities-amenities-tab">
+								<div class="row mt-5">
+									<div class="col-md-3">
+										<p class="mb-1">Rooms</p>
+										<p class="h5">{{ selectedPropertyData.propertyRooms }}</p>
+									</div>
+									<div class="col-md-3">
+										<p class="mb-1">Bedrooms</p>
+										<p class="h5">{{ selectedPropertyData.propertyBedrooms }}</p>
+									</div>
+									<div class="col-md-3">
+										<p class="mb-1">Bathrooms</p>
+										<p class="h5">{{ selectedPropertyData.propertyBathrooms }}</p>
+									</div>
+									<div class="col-md-3">
+										<p class="mb-1">Age</p>
+										<p class="h5">{{ selectedPropertyData.propertyAge }}</p>
+									</div>
+								</div>
+								<div class="row mt-5">
+									<div class="col-md-12">
+										<p class="mb-1">Property Notes</p>
+										<p class="h5">{{ selectedPropertyData.propertyNotes }}</p>
+									</div>
+								</div>
+								<div class="row mt-5">
+									<div class="col-md-12">
+										<p class="mb-1">Features</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasAirConditioner, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasAirConditioner }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Air Conditioner</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasCarParking, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasCarParking }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Car Parking</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasLaundryRoom, 
+										'fa-times text-danger': !selectedPropertyData.propertyHasLaundryRoom }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Laundry Room</strong>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasHeating, 
+										'fa-times text-danger': !selectedPropertyData.propertyHasHeating }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Heating</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasBalcony, 
+										'fa-times text-danger': !selectedPropertyData.propertyHasBalcony }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Balcony</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasGym, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasGym }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Gym</strong>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasInternet, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasInternet }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Internet</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasGarden, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasGarden }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Garden</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasAntiTheftAlarm, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasAntiTheftAlarm }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Alarm</strong>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasSwimmingPool, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasSwimmingPool }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Swimming Pool</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasPetsAllowed, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasPetsAllowed }"></em>
+											</div>
+											<div class="col-11">
+												<strong>Pets Allowed?</strong>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row">
+											<div class="col-1">
+												<em class="fa fa-2x" [ngClass]="{ 'fa-check text-success': selectedPropertyData.propertyHasCctvCameras, 
+												'fa-times text-danger': !selectedPropertyData.propertyHasCctvCameras }"></em>
+											</div>
+											<div class="col-11">
+												<strong>CCTV Cameras</strong>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="units" role="tabpanel" aria-labelledby="units-tab">
+								<div class="table-responsive mt-5"
+									*ngIf="!isPropertyUnitLoading && availablePropertyUnitSummaryDatas.length > 0">
+									<table class="table table-striped table-hover" aria-describedby="Property Unit List">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Title</th>
+												<th scope="col">Details</th>
+												<th scope="col">Rent</th>
+												<th scope="col">Deposit</th>
+												<th scope="col">Commission</th>
+												<th scope="col">Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr
+												*ngFor="let availablePropertyUnitSummaryData of availablePropertyUnitSummaryDatas; let i = index">
+												<th scope="row">{{ i + 1 }}</th>
+												<td>{{ availablePropertyUnitSummaryData.propertyUnitName }}</td>
+												<td>{{ availablePropertyUnitSummaryData.propertyUnitSummaryDescription }}</td>
+												<td>₹ {{ availablePropertyUnitSummaryData.propertyUnitRent }}</td>
+												<td>₹ {{ availablePropertyUnitSummaryData.propertyUnitDeposit }}</td>
+												<td>{{ availablePropertyUnitSummaryData.propertyUnitAgencyCommission }}%</td>
+												<td>
+													<h3>
+														<span [ngClass]="availablePropertyUnitSummaryData.propertyStatus | occupancyStatusColorCode">
+															{{ availablePropertyUnitSummaryData.propertyStatus }}</span>
+													</h3>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="table-responsive"
+									*ngIf="!isPropertyUnitLoading && availablePropertyUnitSummaryDatas.length == 0">
+									<strong class="mb-0 mx-3 my-2">
+										<h4 class="mb-0">No property unit data(s) found in system! <span style="font-size: 25px">😅</span>
+										</h4>
+									</strong>
+								</div>
+								<div class="table-responsive" *ngIf="isPropertyUnitLoading">
+									<strong class="mb-0 mx-3 my-2">
+										<h4 class="mb-0">Please wait... Populating results <span style="font-size: 25px">😄</span></h4>
+									</strong>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ownership" role="tabpanel" aria-labelledby="ownership-tab">
+								<div class="row mt-5">
+									<div class="col-lg-6">
+										<div class="card">
+											<div class="card-header d-flex align-items-center">
+												<h3 class="h4">Landlord Information</h3>
+											</div>
+											<div class="card-body">
+												<p><strong>Full Name: </strong>{{ currentLandlordData?.landlordFullName }}</p>
+												<p><strong>Mobile Number: </strong>{{ currentLandlordData?.landlordMobileNumber }}</p>
+												<p><strong>Email Address: </strong>{{ currentLandlordData?.landlordEmailAddress }}</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="card">
+											<div class="card-header d-flex align-items-center">
+												<h3 class="h4">Transfer Ownership</h3>
+											</div>
+											<div class="card-body">
+												<form (ngSubmit)="onTransferOwnershipOfProperty()" [formGroup]="propertyOwnershipTransferForm">
+													<div class="form-group">
+														<label class="form-control-label">Select Landlord</label>
+														<select class="form-control" formControlName="landlordId"
+															[ngClass]="{ 'is-invalid': submitted && f.landlordId.errors, 'is-valid': submitted && f.landlordId.valid }">
+															<option value="" selected disabled>--Select--</option>
+															<option *ngFor="let landlordData of availableLandlordDatas"
+																[value]="landlordData.landlordId">
+																{{ landlordData.landlordFullName }} ({{landlordData.landlordMobileNumber}})</option>
+														</select>
+														<div *ngIf="submitted && f.landlordId.errors" class="invalid-feedback">
+															<div *ngIf="f.landlordId.errors.required">Landlord is required</div>
+														</div>
+													</div>
+													<div class="form-inline justify-content-end">
+														<div class="form-group">
+															<button type="submit" class="btn btn-success" [disabled]="buttonDisable">
+																{{buttonDisable ? 'Please Wait...' : 'Finalize Transfer'}}</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+								<div class="row mt-5">
+									<div class="col-md-12">
+										<p class="mb-1">Address</p>
+										<p class="h5">{{ selectedPropertyData.propertyAddress }}</p>
+									</div>
+								</div>
+								<div class="row mt-5">
+									<div class="col-md-4">
+										<p class="mb-1">City</p>
+										<p class="h5">{{ selectedPropertyData.propertyCity }}</p>
+									</div>
+									<div class="col-md-4">
+										<p class="mb-1">State</p>
+										<p class="h5">{{ selectedPropertyData.propertyState }}</p>
+									</div>
+									<div class="col-md-4">
+										<p class="mb-1">Pincode</p>
+										<p class="h5">{{ selectedPropertyData.propertyPincode }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

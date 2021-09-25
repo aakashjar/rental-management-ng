@@ -1,0 +1,15 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Inventory</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list">Inventory List</a></li>
+		<li class="breadcrumb-item active">Update Inventory</li>
+	</ul>
+</div>
+<vintage-inventory-form formSubject="Update Existing Inventory" action="update" [inventoryData]="selectedInventoryData">
+</vintage-inventory-form>

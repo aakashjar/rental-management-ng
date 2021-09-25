@@ -1,0 +1,58 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Property Units</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list">Property Unit List</a></li>
+		<li class="breadcrumb-item active">View Property Unit</li>
+	</ul>
+</div>
+<section class="tables">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="h4">Property Unit Information</h3>
+					</div>
+					<div class="card-body">
+						<p><strong>Unit Title: </strong>{{ selectedPropertyUnitData.propertyUnitName }}</p>
+						<p><strong>Parent Property: </strong>{{ selectedPropertyUnitData.propertyName }}</p>
+						<p><strong>Summary: </strong>{{ selectedPropertyUnitData.propertyUnitSummaryDescription }}</p>
+						<p><strong>Monthly Rent: </strong>₹ {{ selectedPropertyUnitData.propertyUnitRent }}</p>
+						<p><strong>Deposit Needed: </strong>₹ {{ selectedPropertyUnitData.propertyUnitDeposit }}</p>
+						<p><strong>Agency Commission: </strong>{{ selectedPropertyUnitData.propertyUnitAgencyCommission }}%</p>
+						<p><strong>Status: </strong><span [ngClass]="selectedPropertyUnitData.propertyStatus | occupancyStatusColorCode">{{
+								selectedPropertyUnitData.propertyStatus }}</span></p>
+						<div class="form-inline justify-content-end">
+							<div class="form-group mr-2">
+								<button type="button" class="btn btn-warning"
+									(click)="onEditPropertyUnitData(selectedPropertyUnitData)">
+									<em class="fa fa-pencil-square-o"></em> Edit</button>
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-danger"
+									(click)="onDeletePropertyUnitData(selectedPropertyUnitData.propertyUnitId)">
+									<em class="fa fa-trash-o"></em> Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">Description/Amenities</h3>
+					</div>
+					<div class="card-body">
+						<p>{{ selectedPropertyUnitData.propertyUnitDescription }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

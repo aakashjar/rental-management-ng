@@ -1,0 +1,177 @@
+<section class="forms">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">{{ formSubject }}</h3>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header d-flex align-items-center">
+										<h3 class="h4">Basic Details</h3>
+									</div>
+									<div class="card-body">
+										<form (ngSubmit)="onSavePropertyUnitData()" [formGroup]="propertyUnitInfoForm">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-control-label">Parent Property</label>
+														<select class="form-control mb-3" formControlName="propertyId"
+															[ngClass]="{ 'is-invalid': submitted && f.propertyId.errors, 'is-valid': submitted && f.propertyId.valid }">
+															<option value="" selected disabled>--Select--</option>
+															<option *ngFor="let propertyData of availablePropertyDatas"
+																[value]="propertyData.propertyId">{{ propertyData.propertyName }}
+																({{ propertyData.propertyCity }})</option>
+														</select>
+														<div *ngIf="submitted && f.propertyId.errors" class="invalid-feedback">
+															<div *ngIf="f.propertyId.errors.required">Parent Property is required</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-control-label">Property Unit Title</label>
+														<input type="text" placeholder="Title" class="form-control"
+															formControlName="propertyUnitName"
+															[ngClass]="{ 'is-invalid': submitted && f.propertyUnitName.errors, 'is-valid': submitted && f.propertyUnitName.valid }">
+														<div *ngIf="submitted && f.propertyUnitName.errors" class="invalid-feedback">
+															<div *ngIf="f.propertyUnitName.errors.required">Title is required</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-control-label">Agency Commission</label>
+														<div class="input-group">
+															<input type="number" placeholder="Agency Commission" class="form-control"
+																formControlName="propertyUnitAgencyCommission"
+																[ngClass]="{ 'is-invalid': submitted && f.propertyUnitAgencyCommission.errors, 'is-valid': submitted && f.propertyUnitAgencyCommission.valid }">
+															<div class="input-group-append"><span class="input-group-text">%</span></div>
+															<div *ngIf="submitted && f.propertyUnitAgencyCommission.errors" class="invalid-feedback">
+																<div *ngIf="f.propertyUnitAgencyCommission.errors.required">Commission is required</div>
+																<div *ngIf="f.propertyUnitAgencyCommission.errors.min">Commission must be atleast 0
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-control-label">Deposit</label>
+														<div class="input-group">
+															<div class="input-group-prepend"><span class="input-group-text">₹</span></div>
+															<input type="number" placeholder="Deposit" class="form-control"
+																formControlName="propertyUnitDeposit"
+																[ngClass]="{ 'is-invalid': submitted && f.propertyUnitDeposit.errors, 'is-valid': submitted && f.propertyUnitDeposit.valid }">
+															<div *ngIf="submitted && f.propertyUnitDeposit.errors" class="invalid-feedback">
+																<div *ngIf="f.propertyUnitDeposit.errors.required">Deposit is required</div>
+																<div *ngIf="f.propertyUnitDeposit.errors.min">Deposit must be atleast 0</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-control-label">Rent</label>
+														<div class="input-group">
+															<div class="input-group-prepend"><span class="input-group-text">₹</span></div>
+															<input type="number" placeholder="Rent" class="form-control"
+																formControlName="propertyUnitRent"
+																[ngClass]="{ 'is-invalid': submitted && f.propertyUnitRent.errors, 'is-valid': submitted && f.propertyUnitRent.valid }">
+															<div *ngIf="submitted && f.propertyUnitRent.errors" class="invalid-feedback">
+																<div *ngIf="f.propertyUnitRent.errors.required">Rent is required</div>
+																<div *ngIf="f.propertyUnitRent.errors.min">Rent must be atleast 0</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="form-control-label">Summary</label>
+														<input type="text" placeholder="E.g Two bedrooms, studio, villa etc" class="form-control"
+															formControlName="propertyUnitSummary"
+															[ngClass]="{ 'is-invalid': submitted && f.propertyUnitSummary.errors, 'is-valid': submitted && f.propertyUnitSummary.valid }">
+														<div *ngIf="submitted && f.propertyUnitSummary.errors" class="invalid-feedback">
+															<div *ngIf="f.propertyUnitSummary.errors.required">Summary is required</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="form-control-label">Description/Features</label>
+														<textarea placeholder="Room features and description" class="form-control"
+															formControlName="propertyUnitDescription"
+															[ngClass]="{ 'is-invalid': submitted && f.propertyUnitDescription.errors, 'is-valid': submitted && f.propertyUnitDescription.valid }"></textarea>
+														<div *ngIf="submitted && f.propertyUnitDescription.errors" class="invalid-feedback">
+															<div *ngIf="f.propertyUnitDescription.errors.required">Description/Features are required
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-inline justify-content-end">
+												<div class="form-group mr-2">
+													<button type="submit" class="btn btn-success" [disabled]="buttonDisable">
+														{{buttonDisable ? 'Please Wait...' : 'Save'}}</button>
+												</div>
+												<div class="form-group" *ngIf="action === 'register'">
+													<button type="button" class="btn btn-danger"
+														(click)="onResetPropertyUnitForm()">Reset</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header d-flex align-items-center">
+										<h3 class="h4">Added Room(s) for Property</h3>
+									</div>
+									<div class="card-body">
+										<div class="card mb-2" *ngIf="availablePropertyUnitDatas?.length == 0">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-12">
+														<h4 class="mb-0">No data(s) found for selected Property! <span
+																style="font-size: 25px">😅</span></h4>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card mb-2" *ngFor="let availablePropertyUnitData of availablePropertyUnitDatas">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-12">
+														<h5>{{ availablePropertyUnitData.propertyUnitName }}</h5>
+														<p class="h6">{{ availablePropertyUnitData.propertyUnitSummary }}</p>
+													</div>
+													<!-- <div class="col-md-2 justify-content-end">
+														<h6><span class="badge badge-secondary">Deposit ₹
+																{{ availablePropertyUnitData.propertyUnitDeposit }}</span></h6>
+														<span class="badge badge-info">Rent ₹{{ availablePropertyUnitData.propertyUnitRent }}</span>
+													</div> -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

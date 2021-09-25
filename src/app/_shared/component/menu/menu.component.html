@@ -1,0 +1,74 @@
+<div class="page-content d-flex align-items-stretch">
+	<!-- Side Navbar -->
+	<nav class="side-navbar" id="sidebar" [class.shrinked]="toggleSideBar">
+		<!-- Sidebar Header-->
+		<div class="sidebar-header d-flex align-items-center">
+			<div class="avatar" [hidden]="!toggleSideBar">
+				<img src="{{assetUrl}}\assets\img\avatar-1.jpg" alt="avatar" class="img-fluid rounded-circle">
+			</div>
+			<div class="title">
+				<h1 class="h4">Administrator</h1>
+				<p></p>
+			</div>
+		</div>
+		<!-- Sidebar Navidation Menus-->
+		<span class="heading">Navigation</span>
+		<ul class="list-unstyled">
+			<li routerLinkActive="active"><a routerLink="/home"><em class="fa fa-tachometer"></em> Home </a></li>
+			<li routerLinkActive="active">
+				<a href aria-expanded="false" data-toggle="collapse" data-target="#tenantdropdown">
+					<em class="fa fa-users"></em> Tenants</a>
+				<ul id="tenantdropdown" class="collapse list-unstyled">
+					<li routerLinkActive="active"><a routerLink="/section/tenant/register">Register Tenant</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/tenant/list">View Tenants</a></li>
+				</ul>
+			</li>
+			<li routerLinkActive="active">
+				<a href aria-expanded="false" data-toggle="collapse" data-target="#landlorddropdown">
+					<em class="fa fa-user-o"></em> Landlords</a>
+				<ul id="landlorddropdown" class="collapse list-unstyled">
+					<li routerLinkActive="active"><a routerLink="/section/landlord/register">Register Landlord</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/landlord/list">View Landlords</a></li>
+				</ul>
+			</li>
+			<li routerLinkActive="active">
+				<a href aria-expanded="false" data-toggle="collapse" data-target="#propertydropdown">
+					<em class="fa fa-building"></em> Properties</a>
+				<ul id="propertydropdown" class="collapse list-unstyled">
+					<li routerLinkActive="active"><a routerLink="/section/property/register">Register Property</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/property/list">View Properties</a></li>
+				</ul>
+			</li>
+			<li routerLinkActive="active">
+				<a href aria-expanded="false" data-toggle="collapse" data-target="#propertyunitdropdown">
+					<em class="fa fa-bed"></em> Property Units</a>
+				<ul id="propertyunitdropdown" class="collapse list-unstyled">
+					<li routerLinkActive="active"><a routerLink="/section/property-unit/register">Register Property Unit</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/property-unit/list">View Property Units</a></li>
+				</ul>
+			</li>
+			<li routerLinkActive="active">
+				<a href aria-expanded="false" data-toggle="collapse" data-target="#leasedropdown">
+					<em class="fa fa-university"></em> Lease</a>
+				<ul id="leasedropdown" class="collapse list-unstyled">
+					<li routerLinkActive="active"><a routerLink="/section/lease/create">Create Lease</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/lease/list-active">View Active Leases</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/lease/list-terminated">View Terminated Leases</a></li>
+				</ul>
+			</li>
+			<li routerLinkActive="active">
+				<a href aria-expanded="false" data-toggle="collapse" data-target="#inventoryropdown">
+					<em class="fa fa-book"></em> Inventory</a>
+				<ul id="inventoryropdown" class="collapse list-unstyled">
+					<li routerLinkActive="active"><a routerLink="/section/inventory/create">Create Inventory</a></li>
+					<li routerLinkActive="active"><a routerLink="/section/inventory/list">View Inventory</a></li>
+				</ul>
+			</li>
+			<li routerLinkActive="active"><a routerLink="/section/invoice/list"><em class="fa fa-file-text"></em> Invoices </a></li>
+		</ul>
+	</nav>
+	<div class="content-inner page" style="width: 100%" [class.active]="toggleSideBar">
+		<router-outlet></router-outlet>
+		<vintage-footer></vintage-footer>
+	</div>
+</div>

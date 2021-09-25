@@ -1,0 +1,160 @@
+<section class="forms">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">{{ formSubject }}</h3>
+					</div>
+					<div class="card-body">
+						<h5>
+							<p>Basic Details</p>
+						</h5>
+						<form (ngSubmit)="onSaveLandlordData()" [formGroup]="landlordInfoForm">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-control-label">Full Name</label>
+										<input type="text" placeholder="Full Name" class="form-control" formControlName="landlordFullName"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordFullName.errors, 'is-valid': submitted && f.landlordFullName.valid }">
+										<div *ngIf="submitted && f.landlordFullName.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordFullName.errors.required">Name is required</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="form-control-label">Mobile Number</label>
+										<input type="text" placeholder="Mobile Number" class="form-control"
+											formControlName="landlordMobileNumber"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordMobileNumber.errors, 'is-valid': submitted && f.landlordMobileNumber.valid }">
+										<small class="form-text text-muted">10 digits without country code.</small>
+										<div *ngIf="submitted && f.landlordMobileNumber.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordMobileNumber.errors.required">Mobile number is required</div>
+											<div *ngIf="f.landlordMobileNumber.errors.minlength">Mobile number must be at least 10 digits
+											</div>
+											<div *ngIf="f.landlordMobileNumber.errors.maxlength">Mobile number must be at most 10 digits</div>
+											<div *ngIf="f.landlordMobileNumber.errors.pattern">Must be a mobile number</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-control-label">Email</label>
+										<input type="email" placeholder="Email Address" class="form-control"
+											formControlName="landlordEmailAddress"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordEmailAddress.errors, 'is-valid': submitted && f.landlordEmailAddress.valid }">
+										<div *ngIf="submitted && f.landlordEmailAddress.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordEmailAddress.errors.required">Email is required</div>
+											<div *ngIf="f.landlordEmailAddress.errors.email">Must be a valid email address</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="form-control-label">Identity Number</label>
+										<input type="text" placeholder="PAN/AADHAR/Passport" class="form-control"
+											formControlName="landlordIdentityNumber"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordIdentityNumber.errors, 'is-valid': submitted && f.landlordIdentityNumber.valid }">
+										<div *ngIf="submitted && f.landlordIdentityNumber.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordIdentityNumber.errors.required">Identity Number is required</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="form-control-label">Address</label>
+										<input type="text" placeholder="Address" class="form-control" formControlName="landlordAddress"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordAddress.errors, 'is-valid': submitted && f.landlordAddress.valid }">
+										<div *ngIf="submitted && f.landlordAddress.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordAddress.errors.required">Address is required</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<h5>
+								<p>Bank Details</p>
+							</h5>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label">Bank Name</label>
+										<input type="text" placeholder="Bank Name" class="form-control" formControlName="landlordBankName"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordBankName.errors, 'is-valid': submitted && f.landlordBankName.valid }">
+										<div *ngIf="submitted && f.landlordBankName.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordBankName.errors.required">Bank Name is required</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label">Bank IFSC</label>
+										<input type="text" placeholder="Bank IFSC" class="form-control" formControlName="landlordBankIfsc"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordBankIfsc.errors, 'is-valid': submitted && f.landlordBankIfsc.valid }">
+										<div *ngIf="submitted && f.landlordBankIfsc.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordBankIfsc.errors.required">Bank IFSC is required</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="form-control-label">Bank Account Number</label>
+										<input type="text" placeholder="Bank Account Number" class="form-control"
+											formControlName="landlordBankAccountNumber"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordBankAccountNumber.errors, 'is-valid': submitted && f.landlordBankAccountNumber.valid }">
+										<div *ngIf="submitted && f.landlordBankAccountNumber.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordBankAccountNumber.errors.required">Bank Account Number is required</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<hr>
+							<h5>
+								<p>Emergency Contact Details</p>
+							</h5>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-control-label">Name</label>
+										<input type="text" placeholder="Name" class="form-control"
+											formControlName="landlordEmergencyContactName"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordEmergencyContactName.errors, 'is-valid': submitted && f.landlordEmergencyContactName.valid }">
+										<div *ngIf="submitted && f.landlordEmergencyContactName.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordEmergencyContactName.errors.required">Occupation Place is required</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-control-label">Mobile Number</label>
+										<input type="tel" placeholder="Mobile Number" class="form-control"
+											formControlName="landlordEmergencyContactMobileNumber"
+											[ngClass]="{ 'is-invalid': submitted && f.landlordEmergencyContactMobileNumber.errors, 'is-valid': submitted && f.landlordEmergencyContactMobileNumber.valid }">
+										<small class="form-text text-muted">10 digits without country code.</small>
+										<div *ngIf="submitted && f.landlordEmergencyContactMobileNumber.errors" class="invalid-feedback">
+											<div *ngIf="f.landlordEmergencyContactMobileNumber.errors.minlength">Mobile number must be at
+												least
+												10 digits</div>
+											<div *ngIf="f.landlordEmergencyContactMobileNumber.errors.maxlength">Mobile number must be at most
+												10 digits</div>
+											<div *ngIf="f.landlordEmergencyContactMobileNumber.errors.pattern">Must be a mobile number</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-inline justify-content-end">
+								<div class="form-group mr-2">
+									<button type="submit" class="btn btn-success" [disabled]="buttonDisable">
+										{{buttonDisable ? 'Please Wait...' : 'Save'}}</button>
+								</div>
+								<div class="form-group" *ngIf="action === 'register'">
+									<button type="button" class="btn btn-danger" (click)="onResetLandlordForm()">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

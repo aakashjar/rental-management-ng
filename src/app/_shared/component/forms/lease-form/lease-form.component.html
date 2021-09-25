@@ -1,0 +1,168 @@
+<section class="forms">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">{{ formSubject }}</h3>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12">
+								<h5>
+									<p>Basic Details</p>
+								</h5>
+								<form (ngSubmit)="onSaveLeaseData()" [formGroup]="leaseInfoForm">
+									<div class="row">
+										<div class="col-md-10">
+											<div class="form-group">
+												<label class="form-control-label">Select Property</label>
+												<select class="form-control" formControlName="propertyId"
+													[ngClass]="{ 'is-invalid': submitted && f.propertyId.errors, 'is-valid': submitted && f.propertyId.valid }">
+													<option value="" selected disabled>--Select--</option>
+													<option *ngFor="let propertyData of availablePropertyDatas" [value]="propertyData.propertyId">
+														{{ propertyData.propertyName }}
+														({{ propertyData.propertyCity }})</option>
+												</select>
+												<div *ngIf="submitted && f.propertyId.errors" class="invalid-feedback">
+													<div *ngIf="f.propertyId.errors.required">Property is required</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2" style="margin-top: 2.5rem;">
+											<div class="form-group">
+												<input type="checkbox" class="checkbox-template" id="leaseUnits" formControlName="leaseUnits"
+													[ngClass]="{ 'is-invalid': submitted && f.leaseUnits.errors, 'is-valid': submitted && f.leaseUnits.valid }">
+												<label class="form-control-label" for="leaseUnits">Lease Units</label>
+											</div>
+										</div>
+									</div>
+									<div class="row" *ngIf="showPropertyUnitField">
+										<div class="col-md-10">
+											<div class="form-group">
+												<label class="form-control-label">Select Property Unit</label>
+												<select class="form-control" formControlName="propertyUnitId"
+													[ngClass]="{ 'is-invalid': submitted && f.propertyUnitId.errors, 'is-valid': submitted && f.propertyUnitId.valid }">
+													<option value="" selected disabled>--Select--</option>
+													<option *ngFor="let propertyUnitData of availablePropertyUnitDatas"
+														[value]="propertyUnitData.propertyUnitId">{{ propertyUnitData.propertyUnitName }}
+														({{ propertyUnitData.propertyUnitSummary }})</option>
+												</select>
+												<div *ngIf="submitted && f.propertyUnitId.errors" class="invalid-feedback">
+													<div *ngIf="f.propertyUnitId.errors.required">Property Unit is required</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="form-control-label">Rent</label>
+												<div class="input-group">
+													<div class="input-group-prepend"><span class="input-group-text">₹</span></div>
+													<input type="text" class="form-control" formControlName="leaseRent"
+														[ngClass]="{ 'is-invalid': submitted && f.leaseRent.errors, 'is-valid': submitted && f.leaseRent.valid }">
+													<div *ngIf="submitted && f.leaseRent.errors" class="invalid-feedback">
+														<div *ngIf="f.leaseRent.errors.required">Rent is required</div>
+														<div *ngIf="f.leaseRent.errors.min">Rent must be atleast 0</div>
+													</div>
+												</div>
+												<small class="form-text text-muted">Auto-populated from selected Property/Property
+													Unit.</small>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="form-control-label">Deposit</label>
+												<div class="input-group">
+													<div class="input-group-prepend"><span class="input-group-text">₹</span></div>
+													<input type="number" class="form-control" formControlName="leaseDepositPaid"
+														[ngClass]="{ 'is-invalid': submitted && f.leaseDepositPaid.errors, 'is-valid': submitted && f.leaseDepositPaid.valid }">
+													<div *ngIf="submitted && f.leaseDepositPaid.errors" class="invalid-feedback">
+														<div *ngIf="f.leaseDepositPaid.errors.required">Deposit is required</div>
+														<div *ngIf="f.leaseDepositPaid.errors.min">Deposit must be atleast 0</div>
+													</div>
+												</div>
+												<small class="form-text text-muted">Auto-populated from selected Property/Property
+													Unit.</small>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="form-control-label">Select Tenant</label>
+												<select class="form-control" formControlName="tenantId"
+													[ngClass]="{ 'is-invalid': submitted && f.tenantId.errors, 'is-valid': submitted && f.tenantId.valid }">
+													<option value="" selected disabled>--Select--</option>
+													<option *ngFor="let tenantData of availableTenantDatas" [value]="tenantData.tenantId">
+														{{ tenantData.tenantFullName }}</option>
+												</select>
+												<div *ngIf="submitted && f.tenantId.errors" class="invalid-feedback">
+													<div *ngIf="f.tenantId.errors.required">Tenant is required</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="form-control-label">Tenant Mobile</label>
+												<input type="text" class="form-control" formControlName="tenantMobileNumber"
+													[ngClass]="{ 'is-invalid': submitted && f.tenantMobileNumber.errors, 'is-valid': submitted && f.tenantMobileNumber.valid }">
+												<small class="form-text text-muted">Auto-populated from Tenant.</small>
+												<div *ngIf="submitted && f.tenantMobileNumber.errors" class="invalid-feedback">
+													<div *ngIf="f.tenantMobileNumber.errors.required">Summary is required</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="form-control-label">Lease Start Date</label>
+												<input type="date" class="form-control" formControlName="leaseStartDate"
+													[ngClass]="{ 'is-invalid': submitted && f.leaseStartDate.errors, 'is-valid': submitted && f.leaseStartDate.valid }">
+												<div *ngIf="submitted && f.leaseStartDate.errors" class="invalid-feedback">
+													<div *ngIf="f.leaseStartDate.errors.required">Start Date is required</div>
+													<div *ngIf="f.leaseStartDate.errors.pastDate">Start Date cannot be past-dated</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="form-control-label">Lease End Date</label>
+												<input type="date" class="form-control" formControlName="leaseEndDate"
+													[ngClass]="{ 'is-invalid': submitted && f.leaseEndDate.errors, 'is-valid': submitted && f.leaseEndDate.valid }">
+												<small class="form-text text-muted">11 Months default validity.</small>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-control-label">Tenancy Terms</label>
+												<textarea placeholder="Lease Terms here" class="form-control" formControlName="leaseTerms"
+													[ngClass]="{ 'is-invalid': submitted && f.leaseTerms.errors, 'is-valid': submitted && f.leaseTerms.valid }"></textarea>
+												<div *ngIf="submitted && f.leaseTerms.errors" class="invalid-feedback">
+													<div *ngIf="f.leaseTerms.errors.required">Terms are required</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-inline justify-content-end">
+										<div class="form-group mr-2">
+											<button type="submit" class="btn btn-success" [disabled]="buttonDisable">
+												{{buttonDisable ? 'Please Wait...' : 'Save'}}</button>
+										</div>
+										<div class="form-group" *ngIf="action === 'register'">
+											<button type="button" class="btn btn-danger" (click)="onResetLeaseForm()">Reset</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

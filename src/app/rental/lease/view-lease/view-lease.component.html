@@ -1,0 +1,52 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Leases</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list-active">Active Lease List</a></li>
+		<li class="breadcrumb-item active">View Lease</li>
+	</ul>
+</div>
+<section class="tables">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">Lease Information</h3>
+					</div>
+					<div class="card-body">
+						<p><strong>Tenant Name: </strong>{{ selectedLeaseData.leaseTenantName }}</p>
+						<p><strong>Landlord Name: </strong>{{ selectedLeaseData.leaseLandlordName }}</p>
+						<p><strong>Property Leased: </strong>{{ selectedLeaseData.leaseForName }}</p>
+						<p><strong>Type: </strong>{{ selectedLeaseData.leaseForType }}</p>
+						<p><strong>Monthly Rent: </strong>{{ selectedLeaseData.leaseRent }}</p>
+						<p><strong>Deposit Paid: </strong>{{ selectedLeaseData.leaseDepositPaid }}</p>
+						<p><strong>Start Date: </strong>{{ selectedLeaseData.leaseStartDate | date:'fullDate' }}</p>
+						<p><strong>End Date: </strong>{{ selectedLeaseData.leaseEndDate | date:'fullDate' }}</p>
+						<div class="form-inline justify-content-end">
+							<div class="form-group">
+								<button type="button" class="btn btn-danger" (click)="onTerminateLeaseData(selectedLeaseData.leaseId)">
+									<em class="fa fa-trash-o"></em> Terminate</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">Tenancy Terms</h3>
+					</div>
+					<div class="card-body">
+						<p>{{ selectedLeaseData.leaseTerms }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

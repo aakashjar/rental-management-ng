@@ -1,0 +1,16 @@
+<header class="page-header">
+	<div class="container-fluid">
+		<h2 class="no-margin-bottom">Property Units</h2>
+	</div>
+</header>
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+		<li class="breadcrumb-item"><a routerLink="../list">Property Unit List</a></li>
+		<li class="breadcrumb-item active">Update Property Unit</li>
+	</ul>
+</div>
+<vintage-property-unit-form formSubject="Update Existing Property Unit" action="update"
+	[propertyUnitData]="selectedPropertyUnitData">
+</vintage-property-unit-form>
